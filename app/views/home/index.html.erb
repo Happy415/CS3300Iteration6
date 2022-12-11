@@ -10,11 +10,17 @@
     h1 {
         text-align: left;
     }
+    .nav-link {
+      color: white;
+    }
+    hr {
+      width: 100%;
+    }
 
 </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-light">
+<nav class="navbar navbar-expand-sm bg-dark">
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link" href="http://localhost:3000">Home</a>
@@ -28,7 +34,6 @@
       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Account</a>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="http://localhost:3000/users/sign_in">Sign in</a></li>
-        <li><a class="dropdown-item" href="http://localhost:3000/users/sign_out">Sign out</a></li>
         <li><a class="dropdown-item" href="http://localhost:3000/users/sign_up">Sign up</a></li>
       </ul>
     </li>
@@ -37,9 +42,16 @@
 
 <h1> Alexander Traffis Portfolio </h1>
 <h1> Home </h1>
+<hr>
 <p> My name is Alexander Traffis. I am attempting to not fail at getting a degree in Computer Science currently.</p>
 <p> These are my projects, please imagine that I have some amazing projects here. </p>
 
+<div style="text-align: right; margin: 0px 200px">        
+  <% if user_signed_in? %>
+      <div> Welcome <%= current_user.email %> </div>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+  <% end %>
+</div>
 
 </body>
 </html>
